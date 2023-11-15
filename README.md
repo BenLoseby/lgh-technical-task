@@ -47,7 +47,7 @@ php artisan lgh:install
 ## Notes:
 
 - Most of the internal applications we maintain utilize the jQuery library and many plugins OR AlpineJs/Livewire.
-- You may use jQuery, raw javascript or AlpineJs/Livewire. 
+- You may use jQuery, vanilla JavaScript or Alpine JS / Livewire. 
 - For tabular data, please use the DataTables plugin (https://datatables.net/)
 - You may use any other 3rd party packages, libraries and/or css/js frameworks of your choice to complete the task.
 - Layouts, fonts, colour schemes if any, are your choice.
