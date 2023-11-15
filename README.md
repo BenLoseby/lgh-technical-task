@@ -2,11 +2,11 @@ This is a laravel 10 project and requires PHP 8.1 minimum to run correctly (We r
 
 ---
 
-- Before doing anything please **create an initial commit** and push to new repository named **lgh-technical** in your personal github account.
+- Before doing anything please clone this repository to your own GitHub account.
 - Make commits and pushes as often as you feel the need to.
-- Ensure your final commit is on or before the given close time provided to you (normally 2.5 hours from providing the repository to you).
+- Ensure your final commit is on or before the given close time provided to you within 5 hours from providing the repository to you).
 - Complete as much as you can.
-
+- Once you feel you have completed as much of the requirements as you feel the need to, email the hiring manager with a link to your repository.
 ---
 
 ## Setup
