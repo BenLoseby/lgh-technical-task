@@ -68,8 +68,8 @@ Generate a mixed bar/line chart which clearly shows:
 
 #### Required:
 
-- How many contracts and quotes were generated each day within the last 3 weeks. (bar)
-- The weekly hire value (line)
+- How many contracts and quotes were generated each day within the last 3 weeks. (bar chart)
+- The weekly hire value (line chart)
 - Show dates in dd/mm/YYYY format on the X axis;
 - Show appropriate Y Axis for each bar/line of the chart.
 
@@ -85,13 +85,8 @@ Generate a mixed bar/line chart which clearly shows:
 
 #### Bonus
 
-- Provide the ability to view the contracts (onrent_lines table) for each date in tabular format via a modal / popup.
-
-        Once finished, commit your work and push
+- Provide the ability to view the order lines for contracts (onrent_lines table) for each date in tabular format via a modal / popup.
 
 ### Part 3: Feature Request (Optional)
 
-- Create a new sub branch of your branch
 - Add a feature of your choice to the report that you feel would be beneficial to management.
-
-        Push your new sub branch with your feature.
