@@ -43,15 +43,15 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.1/echarts.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
-    <div class="v1-wrapper">
+        <div class="v1-wrapper">
             <h1><?= __('Statistics') ?></h1>
             <div class="v1-navigation">
                 <ul>
                     <li>
-                        <a href="<?= Route('listStatistics'); ?>"><?= __('Graphs') ?></a>
+                        <a href="<?= Route('listStatistics') . "#graphs"; ?>"><?= __('Graphs') ?></a>
                     </li>
                     <li> 
-                        <a href="<?= Route('listStatistics'); ?>"><?= __('Tables') ?></a>
+                        <a href="<?= Route('listStatistics') . "#tables"; ?>"><?= __('Tables') ?></a>
                     </li>
                 </ul>
             </div>
