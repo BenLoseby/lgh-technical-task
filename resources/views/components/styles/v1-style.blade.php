@@ -3,7 +3,7 @@
         height: 100%;
     }
     h1 {
-        color: white;
+        color: white !important;
         background-color: #4d4d4d;
     }
     .v1-wrapper {
