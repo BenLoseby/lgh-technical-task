@@ -13,7 +13,7 @@ class StatisticsController extends Controller
     {
         $lookBack = OnRent::whereDate('gen_date', '>=', Carbon::now()->subWeeks(3))->get();
         [$contractsByDate, $quotesByDate, $hireValueByWeek] = $this->getDataFromLookback($lookBack);
-        return view('statistics', ['contracts' => $contractsByDate, 'quotesByDate' => $quotesByDate, 'hireValueByWeek' => $hireValueByWeek]);
+        return view('statistics', ['contracts' => $contractsByDate, 'quotes' => $quotesByDate, 'hireValue' => $hireValueByWeek]);
     }
 
     private function getDataFromLookback($lookBack): array
