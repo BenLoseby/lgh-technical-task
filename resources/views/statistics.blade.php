@@ -35,6 +35,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
         <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.1/echarts.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
     <div class="v1-wrapper">
@@ -50,6 +52,7 @@
                 </ul>
             </div>
             <div id="graphs" class="v1-graphs">
+                <h2><?= __('Contracts Graph') ?></h2>
                 <div id="bar-graph"></div>
             </div>
             <div id="tables" class="v1-tables">
@@ -114,5 +117,52 @@
         $('#contract-table').DataTable();
         $('#quote-table').DataTable();
         $('#hire-table').DataTable();
+
     } );
+
+    var bars_basic_element = document.getElementById('bar-graph');
+        if (bars_basic_element) {
+            var bars_basic = echarts.init(bars_basic_element);
+            bars_basic.setOption({
+                color: ['#3398DB'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {            
+                        type: 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: ['Laptop', 'Phone','Desktop'],
+                        axisTick: {
+                            alignWithLabel: true
+                        }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: 'Total Products',
+                        type: 'bar',
+                        barWidth: '20%',
+                        data: [
+                            {{}},
+                            2, 
+                            3
+                        ]
+                    }
+                ]
+            });
+        }
 </script>
