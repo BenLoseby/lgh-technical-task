@@ -87,6 +87,24 @@
                         @endforeach
                     </tbody>
                 </table>
+                
+                <h2><?= __('Weekly Hire Data') ?></h2>
+                <table id="hire-table" class="v1-table">
+                    <thead>
+                        <tr>
+                            <th><?= __('w.c Date') ?></th>
+                            <th><?= __('Week Value') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($hireValue as $date => $value)
+                            <tr class="v1-tr">
+                                <td class="v1-td">{{ $date }}</td>
+                                <td class="v1-td">{{ $value }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
@@ -95,5 +113,6 @@
     $(document).ready( function () {
         $('#contract-table').DataTable();
         $('#quote-table').DataTable();
+        $('#hire-table').DataTable();
     } );
 </script>
