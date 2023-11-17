@@ -28,14 +28,18 @@
             .v1-navigation li {
                 margin: 5px;
             }
+            .graph {
+                height: 500px;
+            }
         </style>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
         <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.1/echarts.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
@@ -47,13 +51,17 @@
                         <a href="<?= Route('listStatistics'); ?>"><?= __('Graphs') ?></a>
                     </li>
                     <li> 
-                        <a href="#"><?= __('Tables') ?></a>
+                        <a href="<?= Route('listStatistics'); ?>"><?= __('Tables') ?></a>
                     </li>
                 </ul>
             </div>
             <div id="graphs" class="v1-graphs">
-                <h2><?= __('Contracts Graph') ?></h2>
-                <div id="bar-graph"></div>
+                <h2><?= __('Contracts') ?></h2>
+                <div id="bar-graph-contracts" class="graph"></div>
+                <h2><?= __('Quotes') ?></h2>
+                <div id="bar-graph-quotes" class="graph"></div>
+                <h2><?= __('Weekyl Hire Value') ?></h2>
+                <div id="line-graph" class="graph"></div>
             </div>
             <div id="tables" class="v1-tables">
                 <h2><?= __('Contracts Data') ?></h2>
@@ -120,49 +128,190 @@
 
     } );
 
-    var bars_basic_element = document.getElementById('bar-graph');
-        if (bars_basic_element) {
-            var bars_basic = echarts.init(bars_basic_element);
-            bars_basic.setOption({
-                color: ['#3398DB'],
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {            
-                        type: 'shadow'
+    var contractsGraph = document.getElementById('bar-graph-contracts');
+    if (contractsGraph) {
+        var bars_basic = echarts.init(contractsGraph);
+        bars_basic.setOption({
+            color: ['#3398DB'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: <?php
+                        echo(json_encode(array_keys($contracts)));
+                    ?>,
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: 'Contract Count',
+                    type: 'bar',
+                    barWidth: '20%',
+                    data: <?php
+                        echo(json_encode(array_values($contracts)));
+                    ?>
+                }
+            ]
+        });
+    }
+
+    var quptesGraph = document.getElementById('bar-graph-quotes');
+    if (quptesGraph) {
+        var bars_basic = echarts.init(quptesGraph);
+        bars_basic.setOption({
+            color: ['#3398DB'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: <?php
+                        echo(json_encode(array_keys($quotes)));
+                    ?>,
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: 'Contract Count',
+                    type: 'bar',
+                    barWidth: '20%',
+                    data: <?php
+                        echo(json_encode(array_values($quotes)));
+                    ?>
+                }
+            ]
+        });
+    }
+
+    var line_stacked_element = document.getElementById('line-graph');
+    if (line_stacked_element) {
+        var line_stacked = echarts.init(line_stacked_element);
+        line_stacked.setOption({
+            animationDuration: 750,
+            grid: {
+                left: 0,
+                right: 20,
+                top: 35,
+                bottom: 0,
+                containLabel: true
+            },        
+            legend: {
+                data: ['test'],
+                itemHeight: 8,
+                itemGap: 20
+            },
+
+            // Add tooltip
+            tooltip: {
+                trigger: 'axis',
+                backgroundColor: 'rgba(0,0,0,0.75)',
+                padding: [10, 15],
+                textStyle: {
+                    fontSize: 13,
+                    fontFamily: 'Roboto, sans-serif'
+                }
+            },
+            
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                data:  <?php
+                        echo(json_encode(array_keys($hireValue)));
+                    ?>,
+                axisLabel: {
+                    color: '#333'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#999'
                     }
                 },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
+                splitLine: {
+                    lineStyle: {
+                        color: ['#eee']
+                    }
+                }
+            }],
+
+            // Vertical axis
+            yAxis: [{
+                type: 'value',
+                axisLabel: {
+                    color: '#333'
                 },
-                xAxis: [
-                    {
-                        type: 'category',
-                        data: ['Laptop', 'Phone','Desktop'],
-                        axisTick: {
-                            alignWithLabel: true
+                axisLine: {
+                    lineStyle: {
+                        color: '#999'
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ['#eee']
+                    }
+                },
+                splitArea: {
+                    show: true,
+                    areaStyle: {
+                        color: ['rgba(250,250,250,0.1)', 'rgba(0,0,0,0.01)']
+                    }
+                }
+            }],
+
+            // Add series
+            series: [            
+                {
+                    name: 'Laptop',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    symbolSize: 7,
+                    data: <?php
+                        echo(json_encode(array_values($hireValue)));
+                    ?>,
+                    itemStyle: {
+                        normal: {
+                            borderWidth: 2
                         }
                     }
-                ],
-                yAxis: [
-                    {
-                        type: 'value'
-                    }
-                ],
-                series: [
-                    {
-                        name: 'Total Products',
-                        type: 'bar',
-                        barWidth: '20%',
-                        data: [
-                            {{}},
-                            2, 
-                            3
-                        ]
-                    }
-                ]
-            });
-        }
+                }
+            ]
+        });
+    }
 </script>
