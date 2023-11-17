@@ -22,7 +22,15 @@
         <div class="v1-wrapper">
             <h1><?= __('Statistics') ?></h1>
             @include('components.nav')
+
+            <div class="card">
+                <h2><?= __('Graph Data') ?></h2>
+            </div>
             @include('components.graphs')
+
+            <div class="card">
+                <h2><?= __('Tabular Data') ?></h2>
+            </div>
             @include('components.tables')
         </div>
     </body>

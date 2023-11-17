@@ -6,53 +6,16 @@
 
         <title>Technical Assessment</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                height: 100%;
-            }
-            h1 {
-                color: white;
-                background-color: #4d4d4d;
-            }
-            .v1-wrapper {
-                padding: 20px;
-            }
-            .v1-wrapper h1 {
-                display: flex;
-                justify-content: center;
-            }
-            .v1-navigation ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-            }
-            .v1-navigation li {
-                margin: 5px;
-            }
-        </style>
+        @include('components.styles.v1-style')
+        @include('components.styles.nav')
     </head>
     <body>
         <div class="v1-wrapper">
             <h1><?= __('Business Statistics And Analysis') ?></h1>
-            <div class="v1-navigation">
-                <ul>
-                    <li>
-                        <a href="<?= Route('listStatistics') . "#graphs"; ?>"><?= __('Graphs') ?></a>
-                    </li>
-                    <li> 
-                        <a href="<?= Route('listStatistics') . "#tables"; ?>"><?= __('Tables') ?></a>
-                    </li>
-                </ul>
-            </div>
-            <div>
+            @include('components.nav')
+            <div class="card">
                 <p><?= __('Welcome to the Technical Assement Statistical Analysis applicaiton. To see the desired statistics, please click on the desired option from the navigation menu above.') ?></p>
+                <p><?= __('The goal of this application is to dispay relevant information to the user, in a manner that is both concise and infomrative.') ?></p>
             </div>
         </div>
     </body>

@@ -1,10 +1,16 @@
 <div id="graphs" class="v1-graphs">
-    <h2><?= __('Contracts') ?></h2>
-    <div id="bar-graph-contracts" class="graph"></div>
-    <h2><?= __('Quotes') ?></h2>
-    <div id="bar-graph-quotes" class="graph"></div>
-    <h2><?= __('Weekyl Hire Value') ?></h2>
-    <div id="line-graph" class="graph"></div>
+    <div class="card">
+        <h2><?= __('Contracts') ?></h2>
+        <div id="bar-graph-contracts" class="graph"></div>
+    </div>
+    <div class="card">
+        <h2><?= __('Quotes') ?></h2>
+        <div id="bar-graph-quotes" class="graph"></div>
+    </div>
+    <div class="card">
+        <h2><?= __('Weekly Hire Value') ?></h2>
+        <div id="line-graph" class="graph"></div>
+    </div>
 </div>
 
 <script>
@@ -177,10 +183,10 @@
             // Add series
             series: [            
                 {
-                    name: 'Laptop',
+                    name: 'Weekly Hire Value',
                     type: 'line',
                     stack: 'Total',
-                    smooth: true,
+                    smooth: false,
                     symbolSize: 7,
                     data: <?php
                         echo(json_encode(array_values($hireValue)));
